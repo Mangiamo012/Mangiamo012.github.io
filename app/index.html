@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mangiamo: Italian Recipes</title>
+<meta name="description" content="Italian cooking, decided in seconds. Pick a dish, then cook it step by step.">
+<meta property="og:title" content="Mangiamo: Italian Recipes">
+<meta property="og:description" content="Italian cooking, decided in seconds. Pick a dish, then cook it step by step.">
+<meta property="og:image" content="https://mangiamo012.github.io/app/icon.png">
+<link rel="icon" href="icon.png">
+<style>
+  body { margin: 0; background: #FBF7F0; color: #2B2A26; font: 16px/1.6 -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 480px; margin: 0 auto; padding: 56px 20px 64px; text-align: center; }
+  img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 6px 20px rgba(31, 42, 34, 0.18); }
+  h1 { font-family: Georgia, serif; color: #1B3A2F; font-size: 30px; margin: 24px 0 6px; }
+  p { margin: 0 0 28px; color: #55544B; }
+  .store { display: block; margin: 0 auto 12px; max-width: 300px; padding: 14px 20px; border-radius: 14px;
+           background: #1B3A2F; color: #FBF7F0; font-weight: 600; text-decoration: none; }
+  .soon { display: none; margin: 0 auto 12px; max-width: 300px; padding: 14px 20px; border-radius: 14px;
+          border: 1.5px solid #C9B98F; color: #1B3A2F; }
+  .muted { margin-top: 36px; font-size: 13px; color: #77766B; }
+  .muted a { color: #77766B; }
+</style>
+</head>
+<body>
+<main>
+  <img src="icon.png" alt="Mangiamo app icon">
+  <h1>Mangiamo</h1>
+  <p>Italian cooking, decided in seconds.<br>Pick a dish, then cook it step by step.</p>
+  <a class="store" id="ios" href="https://apps.apple.com/app/id6834741731">Download on the App Store</a>
+  <a class="store" id="android" href="https://play.google.com/store/apps/details?id=com.mangiamo012.app">Get it on Google Play</a>
+  <div class="soon" id="soon">Coming soon to the App Store and Google Play</div>
+  <div class="muted"><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></div>
+</main>
+<script>
+  // Turn a store on here once the app is public there; until then that button is hidden.
+  var LIVE = { ios: false, android: false };
+  var ua = navigator.userAgent;
+  var phone = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'ios'
+    : /Android/.test(ua) ? 'android' : null;
+  ['ios', 'android'].forEach(function (store) {
+    if (!LIVE[store]) document.getElementById(store).style.display = 'none';
+  });
+  if (phone && LIVE[phone]) location.replace(document.getElementById(phone).href);
+  else if (!LIVE.ios && !LIVE.android) document.getElementById('soon').style.display = 'block';
+</script>
+</body>
+</html>
